@@ -12,7 +12,6 @@ Builder.load_file('views/table.kv')
 db = Database()
 
 class MenuScreen(Screen):
-    class MenuScreen(Screen):
     def on_enter(self):
         menu_grid = self.ids.menu_grid
         menu_grid.clear_widgets()
@@ -24,6 +23,7 @@ class MenuScreen(Screen):
             btn = Button(text=f"{item[1]} - ${item[3]}")
             btn.bind(on_press=lambda x, i=item: self.add_to_order(i))
             menu_grid.add_widget(btn)
+
 
     def add_to_order(self, item):
         app = App.get_running_app()
