@@ -5,7 +5,6 @@ from kivy.uix.button import Button
 from kivy.lang import Builder
 from models import Database
 
-# Load KV files
 Builder.load_file('views/menu.kv')
 Builder.load_file('views/order.kv')
 Builder.load_file('views/table.kv')
@@ -19,9 +18,9 @@ class MenuScreen(Screen):
 
         # Fetch menu items from database
         menu_items = db.fetch_menu()
+        print("Fetched Menu Items:", menu_items)  # Debug print
 
         for item in menu_items:
-            # item[1] is name, item[3] is price (based on how data is fetched from SQLite)
             btn = Button(text=f"{item[1]} - ${item[3]}")
             btn.bind(on_press=lambda x, i=item: self.add_to_order(i))
             menu_grid.add_widget(btn)
@@ -42,10 +41,10 @@ class OrderScreen(Screen):
     def submit_order(self):
         app = App.get_running_app()
         if app.table_number:
-            order_id = db.save_order(app.table_number, app.order)  # Save order in database
+            order_id = db.save_order(app.table_number, app.order)
             print(f"Order {order_id} submitted for Table {app.table_number}")
-            app.order.clear()  # Clear current order after submission
-            self.manager.current = 'menu'  # Go back to the menu screen
+            app.order.clear()
+            self.manager.current = 'menu'
         else:
             print("Please assign a table first.")
 
@@ -58,7 +57,7 @@ class TableScreen(Screen):
     def confirm_table(self):
         if App.get_running_app().table_number:
             print(f"Order confirmed for Table {App.get_running_app().table_number}")
-            self.manager.current = 'order'  # Go to order screen after assigning table
+            self.manager.current = 'order'
         else:
             print("No table selected.")
 
