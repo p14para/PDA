@@ -5,6 +5,7 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from models import Database
 
+# Load KV files
 Builder.load_file('views/menu.kv')
 Builder.load_file('views/order.kv')
 Builder.load_file('views/table.kv')
@@ -17,13 +18,10 @@ class MenuScreen(Screen):
         menu_grid.clear_widgets()
 
         menu_items = db.fetch_menu()
-        print(f"Fetched menu items: {menu_items}")  # Debugging line
-
         for item in menu_items:
             btn = Button(text=f"{item[1]} - ${item[3]}")
             btn.bind(on_press=lambda x, i=item: self.add_to_order(i))
             menu_grid.add_widget(btn)
-
 
     def add_to_order(self, item):
         app = App.get_running_app()
