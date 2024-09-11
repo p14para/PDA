@@ -14,6 +14,7 @@ db = Database()
 
 class MenuScreen(Screen):
     def on_enter(self):
+        print("Entering MenuScreen")
         menu_grid = self.ids.menu_grid
         menu_grid.clear_widgets()
 
@@ -29,6 +30,7 @@ class MenuScreen(Screen):
 
 class OrderScreen(Screen):
     def on_enter(self):
+        print("Entering OrderScreen")
         order_grid = self.ids.order_grid
         order_grid.clear_widgets()
 
@@ -37,6 +39,7 @@ class OrderScreen(Screen):
             order_grid.add_widget(Label(text=f"{item['name']} - ${item['price']}"))
 
     def submit_order(self):
+        print("Submitting order")
         app = App.get_running_app()
         if app.table_number:
             order_id = db.save_order(app.table_number, app.order)
