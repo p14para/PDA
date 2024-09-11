@@ -1,8 +1,9 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
-from models import Database
 from kivy.uix.button import Button
+from kivy.uix.label import Label
+from models import Database
 
 Builder.load_file('views/menu.kv')
 Builder.load_file('views/order.kv')
