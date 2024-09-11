@@ -1,7 +1,5 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.label import Label
-from kivy.uix.button import Button
 from kivy.lang import Builder
 from models import Database
 
@@ -9,16 +7,14 @@ Builder.load_file('views/menu.kv')
 Builder.load_file('views/order.kv')
 Builder.load_file('views/table.kv')
 
-db = Database()  # Initialize database
+db = Database()
 
 class MenuScreen(Screen):
     def on_enter(self):
         menu_grid = self.ids.menu_grid
         menu_grid.clear_widgets()
 
-        # Fetch menu items from database
         menu_items = db.fetch_menu()
-        print("Fetched Menu Items:", menu_items)  # Debug print
 
         for item in menu_items:
             btn = Button(text=f"{item[1]} - ${item[3]}")
@@ -42,7 +38,6 @@ class OrderScreen(Screen):
         app = App.get_running_app()
         if app.table_number:
             order_id = db.save_order(app.table_number, app.order)
-            print(f"Order {order_id} submitted for Table {app.table_number}")
             app.order.clear()
             self.manager.current = 'menu'
         else:
@@ -52,11 +47,9 @@ class TableScreen(Screen):
     def assign_table(self, table_number):
         app = App.get_running_app()
         app.table_number = table_number
-        print(f"Assigned to Table {table_number}")
 
     def confirm_table(self):
         if App.get_running_app().table_number:
-            print(f"Order confirmed for Table {App.get_running_app().table_number}")
             self.manager.current = 'order'
         else:
             print("No table selected.")
