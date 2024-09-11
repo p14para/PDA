@@ -1,0 +1,22 @@
+<MenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: 'Restaurant Menu'
+            font_size: 32
+            size_hint_y: None
+            height: 50
+
+        ScrollView:
+            GridLayout:
+                id: menu_grid
+                cols: 2
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: 80
+                row_force_default: True
+
+                # Menu items will be dynamically added here

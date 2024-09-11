@@ -1,0 +1,28 @@
+<OrderScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: 'Current Order'
+            font_size: 32
+            size_hint_y: None
+            height: 50
+
+        ScrollView:
+            GridLayout:
+                id: order_grid
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                row_default_height: 80
+                row_force_default: True
+
+                # Order items will be dynamically added here
+
+        Button:
+            text: 'Submit Order'
+            size_hint_y: None
+            height: 50
+            on_press: root.submit_order()  # Logic to submit order

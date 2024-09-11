@@ -1,0 +1,35 @@
+<TableScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: 'Assign Table'
+            font_size: 32
+            size_hint_y: None
+            height: 50
+
+        GridLayout:
+            cols: 4
+            padding: 10
+            spacing: 10
+
+            Button:
+                text: 'Table 1'
+                on_press: root.assign_table(1)
+            Button:
+                text: 'Table 2'
+                on_press: root.assign_table(2)
+            Button:
+                text: 'Table 3'
+                on_press: root.assign_table(3)
+            Button:
+                text: 'Table 4'
+                on_press: root.assign_table(4)
+
+        Button:
+            text: 'Confirm'
+            size_hint_y: None
+            height: 50
+            on_press: root.confirm_table()
