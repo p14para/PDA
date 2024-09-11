@@ -12,11 +12,13 @@ Builder.load_file('views/table.kv')
 db = Database()
 
 class MenuScreen(Screen):
+    class MenuScreen(Screen):
     def on_enter(self):
         menu_grid = self.ids.menu_grid
         menu_grid.clear_widgets()
 
         menu_items = db.fetch_menu()
+        print(f"Fetched menu items: {menu_items}")  # Debugging line
 
         for item in menu_items:
             btn = Button(text=f"{item[1]} - ${item[3]}")
