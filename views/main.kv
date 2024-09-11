@@ -1,0 +1,103 @@
+#:kivy 2.3.0
+<Screen>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1  # White background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+        
+        Label:
+            text: 'Restaurant Management System'
+            font_size: '32sp'
+            bold: True
+            color: 0, 0, 0, 1  # Black text color
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Button:
+            text: 'Menu'
+            size_hint_y: None
+            height: '50dp'
+            on_press: root.manager.current = 'menu'
+        
+        Button:
+            text: 'Orders'
+            size_hint_y: None
+            height: '50dp'
+            on_press: root.manager.current = 'orders'
+        
+        Button:
+            text: 'Test'
+            size_hint_y: None
+            height: '50dp'
+            on_press: root.manager.current = 'test'
+
+<MenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+        
+        Label:
+            text: 'Menu Management'
+            font_size: '28sp'
+            bold: True
+            color: 0, 0, 0, 1  # Black text color
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        # Add more widgets related to Menu management here
+        Button:
+            text: 'Back to Home'
+            size_hint_y: None
+            height: '50dp'
+            on_press: root.manager.current = 'home'
+
+<OrdersScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+        
+        Label:
+            text: 'Orders Management'
+            font_size: '28sp'
+            bold: True
+            color: 0, 0, 0, 1  # Black text color
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        # Add more widgets related to Orders management here
+        Button:
+            text: 'Back to Home'
+            size_hint_y: None
+            height: '50dp'
+            on_press: root.manager.current = 'home'
+
+<TestScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+        
+        Label:
+            text: 'Test Screen'
+            font_size: '28sp'
+            bold: True
+            color: 0, 0, 0, 1  # Black text color
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        # Add test widgets or other relevant elements here
+        Button:
+            text: 'Back to Home'
+            size_hint_y: None
+            height: '50dp'
+            on_press: root.manager.current = 'home'
