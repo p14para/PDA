@@ -1,8 +1,5 @@
 <TestScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        padding: 20
-        spacing: 20
+    FloatLayout:
         canvas.before:
             Color:
                 rgba: 1, 1, 1, 1  # White background
@@ -14,32 +11,12 @@
             text: 'Welcome to the Test Screen!'
             font_size: 36
             color: 0, 0, 0, 1  # Black text
-            size_hint_y: None
-            height: 100
+            size_hint: 0.5, 0.2
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
 
-        BoxLayout:
-            orientation: 'horizontal'
-            spacing: 20
-
-            Button:
-                text: 'Button 1'
-                background_color: 0, 0.5, 1, 1  # Blue background
-                color: 1, 1, 1, 1  # White text
-                size_hint_y: None
-                height: 50
-                width: 200
-
-            Button:
-                text: 'Button 2'
-                background_color: 1, 0.5, 0, 1  # Orange background
-                color: 1, 1, 1, 1  # White text
-                size_hint_y: None
-                height: 50
-                width: 200
-
-        Label:
-            text: 'Another Label'
-            font_size: 24
-            color: 0, 0, 0, 1  # Black text
-            size_hint_y: None
-            height: 50
+        Button:
+            text: 'Test Button'
+            size_hint: 0.3, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            background_color: 0, 0.5, 1, 1  # Blue background
+            on_press: root.test_button_pressed()
